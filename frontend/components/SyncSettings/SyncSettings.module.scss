@@ -1,0 +1,247 @@
+@use '../../styles/variables' as *;
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  @include mobile {
+    padding: 16px 12px;
+  }
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: $color-text-main;
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: $color-text-muted;
+  }
+}
+
+.sectionCard {
+  background-color: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: $shadow-md;
+
+  .sectionTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-text-main;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.statItem {
+  background-color: $color-bg-base;
+  padding: 14px 18px;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+
+  .label {
+    font-size: 12px;
+    color: $color-text-subtle;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-primary;
+  }
+}
+
+.tablesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+
+  .tablePill {
+    font-size: 12px;
+    background-color: $color-bg-base;
+    border: 1px solid $color-border;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    color: $color-text-muted;
+  }
+}
+
+.syncForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: $color-text-muted;
+    }
+
+    input {
+      background-color: $color-bg-base;
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: $color-text-main;
+
+      &:focus {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}
+
+// Upload Dropzone
+.uploadZone {
+  border: 2px dashed $color-border;
+  border-radius: $radius-lg;
+  padding: 28px;
+  text-align: center;
+  background-color: rgba($color-bg-base, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: rgba($color-primary, 0.04);
+  }
+
+  .uploadIcon {
+    font-size: 32px;
+  }
+
+  .uploadTitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: $color-text-main;
+  }
+
+  .uploadSub {
+    font-size: 13px;
+    color: $color-text-subtle;
+  }
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.primaryBtn {
+  background-color: $color-primary;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: $radius-md;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.secondaryBtn {
+  background-color: transparent;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  padding: 10px 18px;
+  border-radius: $radius-md;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    color: $color-text-main;
+    background-color: $color-bg-surface-hover;
+  }
+}
+
+.hint {
+  font-size: 12px;
+  color: $color-text-subtle;
+  line-height: 1.5;
+}
+
+// Modal Prompt
+.modalPrompt {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  .promptDesc {
+    font-size: 14px;
+    color: $color-text-muted;
+    line-height: 1.5;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $color-text-subtle;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid $color-border;
+    }
+
+    span {
+      padding: 0 10px;
+    }
+  }
+}

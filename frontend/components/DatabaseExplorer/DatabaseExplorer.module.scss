@@ -1,0 +1,394 @@
+@use '../../styles/variables' as *;
+
+.explorerLayoutWeb {
+  display: flex;
+  height: calc(100vh - 64px - 48px); // minus header & footer
+  overflow: hidden;
+}
+
+// Left Sidebar
+.sidebarWeb {
+  width: 280px;
+  background-color: $color-bg-surface;
+  border-right: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  .sidebarHeader {
+    padding: 16px 20px;
+    border-bottom: 1px solid $color-border;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .sidebarTitle {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: $color-text-subtle;
+    }
+
+    .tableCountBadge {
+      font-size: 11px;
+      background-color: $color-bg-base;
+      padding: 2px 8px;
+      border-radius: $radius-full;
+      color: $color-text-muted;
+      border: 1px solid $color-border;
+    }
+  }
+
+  .tableList {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .tableItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: $radius-sm;
+    color: $color-text-muted;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-bg-surface-hover;
+      color: $color-text-main;
+    }
+
+    &.active {
+      background-color: $color-primary-subtle;
+      color: $color-primary;
+      font-weight: 600;
+    }
+
+    .rowCount {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+  }
+}
+
+// Right Main Content
+.mainContentWeb {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: $color-bg-base;
+}
+
+.tableToolbar {
+  padding: 16px 24px;
+  border-bottom: 1px solid $color-border;
+  background-color: $color-bg-surface;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+
+  .tableTitleArea {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+
+    .tableName {
+      font-size: 18px;
+      font-weight: 700;
+      color: $color-text-main;
+    }
+
+    .totalRecords {
+      font-size: 13px;
+      color: $color-text-muted;
+    }
+  }
+
+  .searchBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: $color-bg-base;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: 6px 12px;
+    width: 280px;
+
+    input {
+      background: transparent;
+      border: none;
+      color: $color-text-main;
+      font-size: 13px;
+      flex: 1;
+
+      &::placeholder {
+        color: $color-text-subtle;
+      }
+    }
+  }
+}
+
+// Schema Inspector Pills
+.schemaBar {
+  padding: 10px 24px;
+  background-color: rgba($color-bg-surface, 0.5);
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  .schemaLabel {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-text-subtle;
+    margin-right: 4px;
+  }
+
+  .columnPill {
+    font-size: 11px;
+    background-color: $color-bg-base;
+    border: 1px solid $color-border;
+    padding: 3px 8px;
+    border-radius: $radius-full;
+    color: $color-text-muted;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    .colType {
+      color: $color-primary;
+      font-family: monospace;
+    }
+
+    .pkBadge {
+      color: $color-warning;
+      font-weight: 700;
+    }
+  }
+}
+
+// Data Grid
+.tableContainer {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+
+  th {
+    position: sticky;
+    top: 0;
+    background-color: $color-bg-surface;
+    color: $color-text-main;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-bottom: 2px solid $color-border;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid $color-border-subtle;
+    color: $color-text-main;
+    white-space: nowrap;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+}
+
+// Interactive JSON Badge
+.jsonBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  color: #a5b4fc;
+  padding: 2px 8px;
+  border-radius: $radius-sm;
+  font-size: 11px;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: rgba(129, 140, 248, 0.25);
+    border-color: #818cf8;
+    color: #fff;
+  }
+}
+
+.nullCell {
+  color: $color-text-subtle;
+  font-style: italic;
+}
+
+// Pagination Bar
+.paginationBar {
+  padding: 12px 24px;
+  border-top: 1px solid $color-border;
+  background-color: $color-bg-surface;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  .pageInfo {
+    font-size: 13px;
+    color: $color-text-muted;
+  }
+
+  .navButtons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      background-color: $color-bg-base;
+      border: 1px solid $color-border;
+      color: $color-text-main;
+      padding: 6px 12px;
+      border-radius: $radius-sm;
+      font-size: 13px;
+
+      &:hover:not(:disabled) {
+        background-color: $color-bg-surface-hover;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Mobile Explorer
+.explorerLayoutMobile {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .mobileSelect {
+    background-color: $color-bg-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: 10px 14px;
+    color: $color-text-main;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .mobileCardList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobileRecordCard {
+    background-color: $color-bg-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .fieldRow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+
+      .fieldName {
+        color: $color-text-subtle;
+        font-weight: 600;
+      }
+
+      .fieldValue {
+        color: $color-text-main;
+        text-align: right;
+        max-width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+// JSON Modal Content
+.jsonModalViewer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .jsonHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .colName {
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-primary;
+    }
+
+    .copyBtn {
+      background-color: $color-bg-base;
+      border: 1px solid $color-border;
+      color: $color-text-muted;
+      padding: 4px 10px;
+      border-radius: $radius-sm;
+      font-size: 12px;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-text-main;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  .codeBox {
+    background-color: #0b0f19;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    padding: 14px;
+    max-height: 400px;
+    overflow: auto;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}

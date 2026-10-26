@@ -1,0 +1,185 @@
+@use '../../styles/variables' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  @include mobile {
+    padding: 16px 12px;
+  }
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  background-color: $color-bg-surface;
+  padding: 8px 16px;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+
+  .searchIcon {
+    font-size: 16px;
+    color: $color-text-muted;
+  }
+
+  .input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: $color-text-main;
+    font-size: 15px;
+
+    &::placeholder {
+      color: $color-text-subtle;
+    }
+  }
+
+  .countBadge {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text-muted;
+    background-color: $color-bg-base;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+  }
+}
+
+// Web Layout: Grid of Cards
+.gridWeb {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.cardWeb {
+  background-color: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $color-primary;
+    box-shadow: $shadow-md;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  .name {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-main;
+  }
+
+  .affiliation {
+    font-size: 11px;
+    font-weight: 600;
+    color: $color-primary;
+    background-color: $color-primary-subtle;
+    padding: 3px 8px;
+    border-radius: $radius-full;
+  }
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: $color-text-muted;
+  margin-bottom: 14px;
+
+  .metaItem {
+    strong {
+      color: $color-text-main;
+    }
+  }
+}
+
+.talentSnippet {
+  font-size: 12px;
+  line-height: 1.5;
+  color: $color-text-muted;
+  background-color: $color-bg-base;
+  padding: 8px 12px;
+  border-radius: $radius-sm;
+  border-left: 3px solid $color-accent;
+}
+
+// Mobile Layout: Compact List
+.listMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardMobile {
+  background-color: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &:active {
+    background-color: $color-bg-surface-hover;
+  }
+
+  .mobileTitleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-text-main;
+    }
+
+    .affiliation {
+      font-size: 10px;
+      color: $color-primary;
+      background-color: $color-primary-subtle;
+      padding: 2px 6px;
+      border-radius: $radius-full;
+    }
+  }
+
+  .mobileSub {
+    font-size: 12px;
+    color: $color-text-muted;
+  }
+}
+
+.loadingState, .emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: $color-text-muted;
+
+  .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-size: 18px;
+    color: $color-text-main;
+    margin-bottom: 6px;
+  }
+}

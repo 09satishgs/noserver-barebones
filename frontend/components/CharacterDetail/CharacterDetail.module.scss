@@ -1,0 +1,127 @@
+@use '../../styles/variables' as *;
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  @include mobile {
+    padding: 16px 12px;
+  }
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  border-radius: $radius-sm;
+  background-color: $color-bg-surface;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  font-size: 14px;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: $color-text-main;
+    background-color: $color-bg-surface-hover;
+  }
+}
+
+.card {
+  background-color: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+}
+
+.header {
+  padding: 24px 32px;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .name {
+    font-size: 26px;
+    font-weight: 800;
+    color: $color-text-main;
+  }
+
+  .affiliation {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-primary;
+    background-color: $color-primary-subtle;
+    padding: 4px 12px;
+    border-radius: $radius-full;
+  }
+}
+
+.content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mobile {
+    padding: 20px;
+    gap: 16px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.infoBox {
+  background-color: $color-bg-base;
+  padding: 14px 18px;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+
+  .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-text-subtle;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: $color-text-main;
+  }
+}
+
+.section {
+  .sectionTitle {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-text-subtle;
+    margin-bottom: 8px;
+  }
+
+  .box {
+    background-color: $color-bg-base;
+    padding: 16px;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    color: $color-text-main;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+}
